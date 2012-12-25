@@ -307,13 +307,13 @@
           }
         } else if (boxType == "ms") {
           this.color = red;
-          this.boxes = ns / 1000000;
-          var ms = (ns / 100000);
+          this.boxes = ns * Math.pow(10, -6);
+          var ms = ns * Math.pow(10, -6);
           if (ms >= 1) {
-            this.nsDisplay = addCommas(Math.round(ns / 100000) * 1000000);
+            this.nsDisplay = addCommas(Math.round(ns / 1000000) * 1000000);
             this.alternateUnit = " &#8776; " + addCommas(ns / 1000000) + "ms";
           } else {
-            this.nsDisplay = addCommas(ns);
+            this.nsDisplay = addCommas(Math.round(ns / 100000) * 100000);
             this.alternateUnit = "";
           }
         }
