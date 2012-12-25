@@ -313,7 +313,7 @@
             this.nsDisplay = addCommas(Math.round(ns / 1000000) * 1000000);
             this.alternateUnit = " &#8776; " + addCommas(ns / 1000000) + "ms";
           } else {
-            this.nsDisplay = addCommas(Math.round(ns / 100000) * 100000);
+            this.nsDisplay = addCommas(Math.round(Math.max(ns / 100000,1)) * 100000);
             this.alternateUnit = "";
           }
         }
