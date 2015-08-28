@@ -305,7 +305,7 @@
             var us = ns / 1000;
             if (us >= 1) {
               this.nsDisplay = addCommas(Math.round(ns / 1000) * 1000);
-              this.alternateUnit = " ≈ " + addCommas(ns / 1000) + "μs";
+              this.alternateUnit = " &#8776; " + addCommas(ns / 1000) + "&mu;s";
             } else {
               this.nsDisplay = addCommas(ns);
               this.alternateUnit = "";
@@ -325,7 +325,7 @@
             var us = ns / 1000;
             if (us >= 1) {
               this.nsDisplay = addCommas(Math.round(ns / 1000) * 1000);
-              this.alternateUnit = " ≈ " + addCommas(ns / 1000) + "μs";
+              this.alternateUnit = " &#8776; " + addCommas(ns / 1000) + "&mu;s";
             } else {
               this.nsDisplay = addCommas(ns);
               this.alternateUnit = "";
