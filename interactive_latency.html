@@ -58,7 +58,7 @@
     // TODO: get more accurate doubling rates from Aurojit Panda's
     //       spreadsheet: http://www.eecs.berkeley.edu/~rcs/research/hw_trends.xlsx
 
-    var year = 2012;
+    var year = new Date().getFullYear();
     function shift(year) {
         return year - 1982;
     }
@@ -301,11 +301,18 @@
         } else if (boxType == "10us") {
           this.color = green;
           this.boxes = ns / 10000;
-          this.nsDisplay = addCommas(Math.round(ns / 1000) * 1000);
           if (displayString != "") {
-             this.alternateUnit = " &#8776; " + addCommas(ns / 1000) + "&mu;s";
+            var us = ns / 1000;
+            if (us >= 1) {
+              this.nsDisplay = addCommas(Math.round(ns / 1000) * 1000);
+              this.alternateUnit = " &#8776; " + addCommas(ns / 1000) + "&mu;s";
+            } else {
+              this.nsDisplay = addCommas(ns);
+              this.alternateUnit = "";
+            }
           } else {
-             this.alternateUnit = " = 1ms";
+            this.nsDisplay = addCommas(Math.round(ns / 1000) * 1000);
+            this.alternateUnit = " = 1ms";
           }
         } else if (boxType == "ms") {
           this.color = red;
@@ -315,8 +322,14 @@
             this.nsDisplay = addCommas(Math.round(ns / 1000000) * 1000000);
             this.alternateUnit = " &#8776; " + addCommas(ns / 1000000) + "ms";
           } else {
-            this.nsDisplay = addCommas(Math.round(Math.max(ns / 100000,1)) * 100000);
-            this.alternateUnit = "";
+            var us = ns / 1000;
+            if (us >= 1) {
+              this.nsDisplay = addCommas(Math.round(ns / 1000) * 1000);
+              this.alternateUnit = " &#8776; " + addCommas(ns / 1000) + "&mu;s";
+            } else {
+              this.nsDisplay = addCommas(ns);
+              this.alternateUnit = "";
+            }
           }
         }
 
