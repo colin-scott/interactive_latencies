@@ -361,8 +361,8 @@
         var ns100 = new Metric(100, "ns", "", "ns100", ' = ' + singleBox(blue));
         var mem = new Metric(getMemLatency(), "100ns", "Main memory reference: ", "mem");
         var micro = new Metric(100*10, "100ns", "", "micro");
-        var zippy = new Metric(6000 * getCycle(), "100ns", "Compress 1KB wth Zippy: ",
-                               "zippy");
+        var snappy = new Metric(6000 * getCycle(), "100ns", "Compress 1KB wth Snappy: ",
+                               "snappy");
         var tenMicro = new Metric(100*100, "100ns", "", "tenMicro", ' = ' + singleBox(green));
         var network = new Metric(getNICTransmissionDelay(getNetworkPayloadBytes()), "10us",
               "Send " + addCommas(getNetworkPayloadBytes()) + " bytes over commodity network: ", "network");
@@ -377,7 +377,7 @@
         var mbDisk = new Metric(getDiskTransmissionDelay(getPayloadBytes()), "ms",
                                 "Read " + addCommas(getPayloadBytes()) + " bytes sequentially from disk: ", "mbDisk");
         var wan = new Metric(getWanRTT(), "ms", "Packet roundtrip CA to Netherlands: ", "wan");
-        var metrics = new Array(ns,L1,branch,L2,mutex,ns100,mem,micro,zippy,tenMicro,network,
+        var metrics = new Array(ns,L1,branch,L2,mutex,ns100,mem,micro,snappy,tenMicro,network,
                                ssdRandom,mbMem,rtt,ms,mbSSD,seek,mbDisk,wan);
         return metrics;
     }
@@ -488,8 +488,8 @@
               <div class="span12"></div>
           </div>
           <div class="row-fluid">
-              <div class="span4" id="zippy"></div>
-              <div class="span8" id="zippyt"></div>
+              <div class="span4" id="snappy"></div>
+              <div class="span8" id="snappyt"></div>
           </div>
           <div class="row-fluid">
               <div class="span12"></div>
