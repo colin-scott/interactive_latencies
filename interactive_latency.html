@@ -223,9 +223,10 @@
           ch += 10;
         }
         var rects = d3.select("#" + div).
-         append("svg:svg").
-         attr("width", cw).
-         attr("height", ch);
+          append("svg:svg").
+          attr("width", cw).
+          attr("height", ch).
+          attr("style", color);
 
         var length = 10;
         var whitespace = 2;
@@ -241,8 +242,7 @@
                   attr("x", x).
                   attr("y", y).
                   attr("height", length).
-                  attr("width", width).
-                  attr("style", color);
+                  attr("width", width);
 
                 n -= 1;
                 if (n <= 0) {
