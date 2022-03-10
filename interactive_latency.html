@@ -216,17 +216,14 @@
     }
 
     // Display functions:
-    function drawBoxes(n, div, color) {
+    function createBoxes(n, color) {
         var cw = 100;
-        var ch = (n / 10) * 10;
-        if ((n % 10) != 0) {
-          ch += 10;
-        }
-        var rects = d3.select("#" + div).
+        var ch = Math.ceil(n / 10) * 10;
+        var rects = d3.select(document.createDocumentFragment()).
           append("svg:svg").
           attr("width", cw).
           attr("height", ch).
-          attr("style", color);
+          attr("style", "display: block; " + color);
 
         var length = 10;
         var whitespace = 2;
@@ -246,10 +243,12 @@
 
                 n -= 1;
                 if (n <= 0) {
-                   return;
+                   return rects;
                 }
             }
         }
+
+        return rects;
     }
 
     function singleBox(color) {
@@ -344,8 +343,10 @@
                               this.alternateUnit + " " + optionalSuffix);
         this.div = div;
         this.fillDiv = function() {
-          document.getElementById(this.div).innerHTML = "";
-          drawBoxes(this.boxes, this.div, this.color);
+          var boxes = createBoxes(this.boxes, this.color);
+          var div = document.getElementById(this.div);
+          div.innerHTML = "";
+          div.appendChild(boxes.node());
           document.getElementById(this.div + "t").innerHTML = this.displayString;
         }
     }
@@ -405,6 +406,7 @@
       body {
         padding-top: 60px;
         padding-bottom: 40px;
+        overflow-y: scroll;
       }
       .sidebar-nav {
         padding: 9px 0;
