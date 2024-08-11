@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Numbers Every Programmer Should Know By Year</title>
     <script src="lib/codemirror.js"></script>
     <script src=lib/xml.js></script>
@@ -16,9 +17,6 @@
         padding-bottom: 10px;
         padding-left: 10px;
         padding-right: 10px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
       }
     </style>
     <link href="lib/bootstrap-responsive.css" rel="stylesheet">
@@ -406,8 +404,22 @@
         padding-top: 60px;
         padding-bottom: 40px;
       }
-      .sidebar-nav {
-        padding: 9px 0;
+      .latency-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+          gap: 4rem;
+          font-size: 1.1rem;
+          padding: 1rem;
+      }
+      .latency-container > * {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+      }
+      .latency-entry {
+          display: flex;
+          gap: 1rem;
+          justify-content: flex-start;
       }
     </style>
     <link href="lib/bootstrap-responsive.css" rel="stylesheet">
@@ -427,138 +439,93 @@
         </div>
       </div>
       <div id="slider">
-        <div class="row-fluid">
-          <div class="span12"></div>
+        <div>
+          <div></div>
         </div>
       </div>
-      <div class="row-fluid">
-        <div class="span3">
-          <div class="row-fluid">
-              <div class="span4" id="ns"></div>
-              <div class="span8" id="nst"></div>
+      <div class="latency-container">
+        <div>
+          <div class="latency-entry">
+              <div id="ns"></div>
+              <div id="nst"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
+          <div class="latency-entry">
+              <div id="L1"></div>
+              <div id="L1t"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span4" id="L1"></div>
-              <div class="span8" id="L1t"></div>
+          <div class="latency-entry">
+              <div id="branch"></div>
+              <div id="brancht"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
+          <div class="latency-entry">
+              <div id="L2"></div>
+              <div id="L2t"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span4" id="branch"></div>
-              <div class="span8" id="brancht"></div>
+          <div class="latency-entry">
+              <div id="mutex"></div>
+              <div id="mutext"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span4" id="L2"></div>
-              <div class="span8" id="L2t"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span4" id="mutex"></div>
-              <div class="span8" id="mutext"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span4" id="ns100"></div>
-              <div class="span8" id="ns100t"></div>
+          <div class="latency-entry">
+              <div id="ns100"></div>
+              <div id="ns100t"></div>
           </div>
         </div><!--First Column-->
-        <div class="span3">
-          <div class="row-fluid">
-              <div class="span4" id="mem"></div>
-              <div class="span8" id="memt"></div>
+        <div>
+          <div class="latency-entry">
+              <div id="mem"></div>
+              <div id="memt"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
+          <div class="latency-entry">
+              <div id="micro"></div>
+              <div id="microt"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span4" id="micro"></div>
-              <div class="span8" id="microt"></div>
+          <div class="latency-entry">
+              <div id="snappy"></div>
+              <div id="snappyt"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span4" id="snappy"></div>
-              <div class="span8" id="snappyt"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span4" id="tenMicro"></div>
-              <div class="span8" id="tenMicrot"></div>
+          <div class="latency-entry">
+              <div id="tenMicro"></div>
+              <div id="tenMicrot"></div>
           </div>
         </div><!--Second Column-->
-        <div class="span3">
-          <div class="row-fluid">
-              <div class="span4" id="network"></div>
-              <div class="span8" id="networkt"></div>
+        <div>
+          <div class="latency-entry">
+              <div id="network"></div>
+              <div id="networkt"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
+          <div class="latency-entry">
+              <div id="ssdRandom"></div>
+              <div id="ssdRandomt"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span4" id="ssdRandom"></div>
-              <div class="span8" id="ssdRandomt"></div>
+          <div class="latency-entry">
+              <div id="mbMem"></div>
+              <div id="mbMemt"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
+          <div class="latency-entry">
+              <div id="rtt"></div>
+              <div id="rttt"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span4" id="mbMem"></div>
-              <div class="span8" id="mbMemt"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span4" id="rtt"></div>
-              <div class="span8" id="rttt"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span4" id="ms"></div>
-              <div class="span8" id="mst"></div>
+          <div class="latency-entry">
+              <div id="ms"></div>
+              <div id="mst"></div>
           </div>
         </div><!--Third Column-->
-        <div class="span3">
-          <div class="row-fluid">
-              <div class="span4" id="mbSSD"></div>
-              <div class="span8" id="mbSSDt"></div>
+        <div>
+          <div class="latency-entry">
+              <div id="mbSSD"></div>
+              <div id="mbSSDt"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
+          <div class="latency-entry">
+              <div id="seek"></div>
+              <div id="seekt"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span4" id="seek"></div>
-              <div class="span8" id="seekt"></div>
+          <div class="latency-entry">
+              <div id="mbDisk"></div>
+              <div id="mbDiskt"></div>
           </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span4" id="mbDisk"></div>
-              <div class="span8" id="mbDiskt"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span12"></div>
-          </div>
-          <div class="row-fluid">
-              <div class="span4" id="wan"></div>
-              <div class="span8" id="want"></div>
+          <div class="latency-entry">
+              <div id="wan"></div>
+              <div id="want"></div>
           </div>
         </div><!--Fourth Column-->
       </div><!-- row-fluid -->
